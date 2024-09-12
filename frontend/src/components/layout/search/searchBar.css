@@ -1,79 +1,119 @@
+/* Main container */
 .main {
   position: absolute;
   right: 175px;
-  width: 700px;
+  width: 500px;
 }
 
+/* Search bar container */
 .search-bar-container {
   position: absolute;
   display: flex;
-  width: 430px;
-  top: 10px;
+  width: 400px;
+  top: 8px;
   right: -30px;
   box-shadow: 0em 0.1em 0.05em #ccc;
 }
 
 .search-input {
-  width: 100%;
-  position: relative;
+  width: 90%;
+  position: absolute;
+}
+
+.search-button {
+  position: absolute;
+  right: 0;
+  padding: 10px;
 }
 
 .search-bar-container:hover {
   border: 2px solid #110f74;
 }
 
-.patients {
-  overflow-y: auto;
-  width: 700px;
-  max-height: 250px;
-  position: relative;
-  background-color: #f0e7e7;
-  top: 45px;
-  box-shadow: 0em 0.1em 0.5em #ccc;
-}
+/* Responsive design */
 
-.patientHead {
-  width: 680px;
-  position: relative;
-  border-bottom: 2px solid #eee3e3;
-  background-color: #fcfbfb;
-  height: 52px;
-  box-shadow: 0em 0.01em 0.05em #ccc;
-}
-.tags {
-  margin-left: -100px;
-}
-.patientHead:hover {
-  background-color: #bbadad;
-  cursor: pointer;
-}
+/* Small screens (max-width: 599px) */
+@media screen and (max-width: 599px) {
+  .search-button {
+    display: none;
+  }
 
-@media (max-width: 768px) {
-  .patientHead {
-    flex-direction: column;
+  .logo {
+    height: 29px;
+    width: 35px;
   }
 
   .search-bar-container {
-    flex-direction: column;
+    position: fixed;
+    left: 35px;
+    right: 25px;
+    flex-direction: row;
     align-items: stretch;
+    width: 10%;
+    top: 50px;
   }
 
   .search-input {
-    width: 100%;
+    width: 10%;
   }
 }
 
-@media (min-width: 769px) and (max-width: 1024px) {
-  .patientHead {
-    flex-direction: row;
+/* Medium devices (600px and below) */
+@media screen and (max-width: 600px) {
+  .search-button {
+    display: none;
   }
 
+  .search-bar-container {
+    flex-direction: row;
+    align-items: stretch;
+    width: 35%;
+    margin: 0 auto;
+  }
+
+  .search-input {
+    width: 40%;
+  }
+}
+
+/* Medium to large devices (600px to 750px) */
+@media screen and (max-width: 750px) {
+  .search-bar-container {
+    flex-direction: row;
+    align-items: stretch;
+    width: 55%;
+    max-width: 430px;
+    margin: 0 auto;
+  }
+
+  .search-input {
+    width: 50%;
+  }
+}
+
+/* Large devices (750px to 1036px) */
+@media screen and (max-width: 1036px) {
   .search-bar-container {
     flex-direction: row;
     align-items: center;
+    top: 50px;
+    width: 65%;
   }
 
   .search-input {
+    width: 60%;
+  }
+}
+
+/* Extra large devices (1037px to 1080px) */
+@media screen and (min-width: 1037px) and (max-width: 1080px) {
+  .search-bar-container {
+    flex-direction: row;
+    align-items: center;
     width: 75%;
+  }
+
+  .search-input {
+    width: 70%;
   }
 }
