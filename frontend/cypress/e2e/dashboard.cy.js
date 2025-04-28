@@ -10,7 +10,7 @@ let providerManagementPage = new ProviderManagementPage();
 let orgMgmnt = new OrganizationManagementPage();
 let adminPage = new AdminPage();
 
-// Helper function to log in and navigate to the homepage
+//Helper function to log in and navigate to the homepage
 const loginAndNavigateToHome = () => {
   loginPage = new LoginPage();
   loginPage.visit();
