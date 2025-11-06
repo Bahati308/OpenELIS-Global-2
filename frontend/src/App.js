@@ -48,6 +48,8 @@ import ReferredOutTests from "./components/resultPage/resultsReferredOut/Referre
 import ChangePassword from "./components/ChangePassword.js";
 import { Roles } from "./components/utils/Utils";
 import NoteBookInstanceEntryForm from "./components/notebook/NoteBookInstanceEntryForm.js";
+import ManageInventory from "./components/inventory/ManageInventory";
+import DisplayInventory from "./components/inventory/DisplayInventory";
 
 export default function App() {
   let i18nConfig = {
@@ -568,6 +570,18 @@ export default function App() {
                   exact
                   component={() => <AnalyserResultIndex />}
                   role={Roles.ANALYSER_IMPORT}
+                />
+                <SecureRoute
+                  path="/ManageInventory"
+                  exact
+                  component={() => <ManageInventory />}
+                  role={Roles.GLOBAL_ADMIN}
+                />
+                <SecureRoute
+                  path="/DisplayInventory"
+                  exact
+                  component={() => <DisplayInventory />}
+                  role=""
                 />
                 <Route path="*" component={() => <RedirectOldUI />} />
               </Switch>
