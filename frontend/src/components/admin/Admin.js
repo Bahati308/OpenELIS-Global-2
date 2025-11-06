@@ -62,6 +62,7 @@ import TestNotificationConfigEdit from "./testNotificationConfigMenu/TestNotific
 import SearchIndexManagement from "./searchIndexManagement/SearchIndexManagement";
 import TestManagementConfigMenu from "./testManagementConfigMenu/TestManagementConfigMenu.js";
 import ResultSelectListAdd from "./testManagementConfigMenu/ResultSelectListAdd.js";
+import AdminDashboard from "./AdminDashboard";
 import TestAdd from "./testManagementConfigMenu/TestAdd.js";
 import TestModifyEntry from "./testManagementConfigMenu/TestModifyEntry.js";
 import TestOrderability from "./testManagementConfigMenu/TestOrderability.js";
@@ -93,6 +94,7 @@ import MethodRenameEntry from "./testManagementConfigMenu/MethodRenameEntry.js";
 function Admin() {
   const intl = useIntl();
   const [isSmallScreen, setIsSmallScreen] = useState(false);
+  const [showDashboard, setShowDashboard] = useState(true);
 
   useEffect(() => {
     const mediaQuery = window.matchMedia("(max-width: 1024px)"); //applicable for medium screen and below  for only small screen set max-width: 768px
@@ -105,12 +107,25 @@ function Admin() {
       mediaQuery.removeEventListener("change", handleMediaQueryChange);
   }, []);
 
+  useEffect(() => {
+    // Show dashboard only when there's no hash
+    const handleHashChange = () => {
+      setShowDashboard(!window.location.hash || window.location.hash === "#");
+    };
+
+    handleHashChange();
+    window.addEventListener("hashchange", handleHashChange);
+
+    return () => window.removeEventListener("hashchange", handleHashChange);
+  }, []);
+
   return (
     <>
       <SideNav
         aria-label="Side navigation"
         defaultExpanded={true}
         isRail={isSmallScreen}
+        style={{ width: isSmallScreen ? "48px" : "22rem" }}
       >
         <SideNavItems className="adminSideNav">
           <SideNavMenu
@@ -326,6 +341,8 @@ function Admin() {
           </SideNavLink>
         </SideNavItems>
       </SideNav>
+
+      {showDashboard && <AdminDashboard />}
 
       <PathRoute path="#reflex">
         <ReflexTestManagement />
