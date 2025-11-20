@@ -32,6 +32,7 @@ import {
   ResultNew,
   Popup,
   Search,
+  Package,
 } from "@carbon/icons-react";
 import PathRoute from "../utils/PathRoute";
 import CalculatedValue from "./calculatedValue/CalculatedValueForm";
@@ -162,6 +163,9 @@ function Admin() {
             renderIcon={BootVolumeAlt}
           >
             <FormattedMessage id="sidenav.label.admin.Listplugin" />
+          </SideNavLink>
+          <SideNavLink href="/ManageInventory" renderIcon={Package}>
+            <FormattedMessage id="sidenav.label.admin.inventory" />
           </SideNavLink>
           <SideNavLink
             data-cy="orgMgmnt"
